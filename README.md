@@ -86,7 +86,10 @@ cd ai-tsav-JEEVANSETU-AI
 npm install
 ```
 
-### 3. Environment Configuration (`.env`)
+### 3. Environment Configuration (`.env`) & Gemini API Setup
+
+> ⚠️ **Important Security Note**: All live Gemini API keys have been removed from this repository. Only placeholders are checked into version control. You must provide your own Google Gemini API key using one of the methods below.
+
 Create or verify your `.env` file in the root directory:
 ```env
 # Supabase Configuration
@@ -94,9 +97,23 @@ VITE_SUPABASE_URL=https://kdndbqxcrpqdxsgszlsy.supabase.co
 VITE_SUPABASE_ANON_KEY=9hLZ2tW9OZTqlfH3TS1JXlBmIHoxNPmMDhJA-ymZM8A
 VITE_SUPABASE_CLIENT_ID=4b0ae14c-5978-4cd8-8e7e-53b2f55a23c5
 
-# Gemini Model
+# Google Gemini AI API Configuration
+# Replace YOUR_GEMINI_API_KEY_HERE with your personal Google Gemini API key
+VITE_GEMINI_API_KEY=YOUR_GEMINI_API_KEY_HERE
 VITE_GEMINI_MODEL=gemini-2.0-flash
 ```
+
+#### Where to enter your Gemini API Key:
+
+1. **Root Environment File (`.env`)**:
+   Add `VITE_GEMINI_API_KEY=YOUR_GEMINI_API_KEY_HERE` in the root `.env` file.
+2. **Supabase Edge Functions Folder (`supabase/functions/`)**:
+   If deploying server-side Edge Functions, set the secret in Supabase CLI or copy `supabase/functions/.env.example` to `supabase/functions/.env`:
+   ```bash
+   supabase secrets set GEMINI_API_KEY=YOUR_GEMINI_API_KEY_HERE
+   ```
+3. **Application UI Settings Modal (⚙️)**:
+   In the running web app, click the **⚙️ Settings** icon in the top header and enter your key in the **Google Gemini AI API Key** input field. The key will be stored securely in your browser's local storage.
 
 ### 4. Development Server
 Run the local Vite development server:
